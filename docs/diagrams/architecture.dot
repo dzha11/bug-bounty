@@ -1,0 +1,23 @@
+digraph A {
+  rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#ffffff", color="#5c6b68"]; edge [fontname="Helvetica", fontsize=9, color="#5c6b68"];
+  subgraph cluster_users { label="Actors"; style="rounded,dashed"; color="#b0aca2";
+    R [label="Researcher"]; O [label="Triage operator"]; C [label="Payment committee\n(ADMIN)"]; G [label="Agency\n(asset owner)"]; }
+  W [label="Web client\nNext.js 16 / React 19\n(role-based pages)", fillcolor="#e6f0ee"];
+  subgraph cluster_api { label="API  —  NestJS 12 (TypeScript)"; style="rounded"; color="#0f5c55"; fontcolor="#0f5c55";
+    GU [label="AuthGuard\n(deny-by-default, RBAC, HS256 token)"];
+    AU [label="Auth\nregister / login\n(scrypt, throttling)"];
+    PR [label="Programs\ncatalog, scope,\nreward matrix, Safe Harbor"];
+    RS [label="Reports service\nworkflow state machine"];
+    SC [label="Scoring\nCVSS 3.1 calculator\nbaseline vs multi-factor"];
+    DD [label="Duplicate check\nTF-IDF cosine +\ntarget fingerprint"];
+    CR [label="CryptoService\nAES-256-GCM + AAD,\nHMAC-SHA256"];
+    AL [label="AuditService\nhash-chained log"];
+    AN [label="Analytics /\nleaderboard"];
+  }
+  DB [label="PostgreSQL 16\nencrypted report fields\nappend-only audit_log (trigger)", shape=cylinder, fillcolor="#f6f5f1"];
+  R -> W; O -> W; C -> W; G -> W;
+  W -> GU [label="HTTPS JSON\nBearer token"];
+  GU -> AU; GU -> PR; GU -> RS; GU -> AN;
+  RS -> SC; RS -> DD; RS -> CR; RS -> AL; PR -> AL; AU -> AL; AU -> CR;
+  RS -> DB; PR -> DB; AU -> DB; AL -> DB; AN -> DB;
+}

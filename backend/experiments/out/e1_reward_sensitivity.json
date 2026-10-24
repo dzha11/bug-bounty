@@ -1,0 +1,80 @@
+{
+  "summary": [
+    {
+      "finding": "Reflected XSS",
+      "cvss": 6.1,
+      "baselineTier": "MEDIUM",
+      "baselineReward": 395000,
+      "baselineDistinctOutputs": 1,
+      "mfDistinctTiers": 3,
+      "mfTiers": "LOW/MEDIUM/HIGH",
+      "mfDistinctRewards": 73,
+      "mfMinReward": 137000,
+      "mfMaxReward": 1304000,
+      "pctSameTier": 80,
+      "pctUpgraded": 16,
+      "pctDowngraded": 3
+    },
+    {
+      "finding": "Authenticated IDOR (read)",
+      "cvss": 6.5,
+      "baselineTier": "MEDIUM",
+      "baselineReward": 442000,
+      "baselineDistinctOutputs": 1,
+      "mfDistinctTiers": 3,
+      "mfTiers": "LOW/MEDIUM/HIGH",
+      "mfDistinctRewards": 73,
+      "mfMinReward": 140000,
+      "mfMaxReward": 1360000,
+      "pctSameTier": 76,
+      "pctUpgraded": 22,
+      "pctDowngraded": 2
+    },
+    {
+      "finding": "Unauth. info disclosure",
+      "cvss": 7.5,
+      "baselineTier": "HIGH",
+      "baselineReward": 750000,
+      "baselineDistinctOutputs": 1,
+      "mfDistinctTiers": 4,
+      "mfTiers": "LOW/MEDIUM/HIGH/CRITICAL",
+      "mfDistinctRewards": 73,
+      "mfMinReward": 147000,
+      "mfMaxReward": 1950000,
+      "pctSameTier": 34,
+      "pctUpgraded": 0,
+      "pctDowngraded": 66
+    },
+    {
+      "finding": "High-complexity RCE",
+      "cvss": 8.1,
+      "baselineTier": "HIGH",
+      "baselineReward": 1050000,
+      "baselineDistinctOutputs": 1,
+      "mfDistinctTiers": 3,
+      "mfTiers": "MEDIUM/HIGH/CRITICAL",
+      "mfDistinctRewards": 73,
+      "mfMinReward": 262000,
+      "mfMaxReward": 2454000,
+      "pctSameTier": 41,
+      "pctUpgraded": 0,
+      "pctDowngraded": 59
+    },
+    {
+      "finding": "Unauth. RCE",
+      "cvss": 9.8,
+      "baselineTier": "CRITICAL",
+      "baselineReward": 2700000,
+      "baselineDistinctOutputs": 1,
+      "mfDistinctTiers": 4,
+      "mfTiers": "MEDIUM/HIGH/CRITICAL/EXCEPTIONAL",
+      "mfDistinctRewards": 73,
+      "mfMinReward": 318000,
+      "mfMaxReward": 4776000,
+      "pctSameTier": 5,
+      "pctUpgraded": 2,
+      "pctDowngraded": 93
+    }
+  ],
+  "n": 1280
+}

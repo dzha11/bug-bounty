@@ -1,14 +1,13 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "description": "",
+  "description": "CyberHunt KZ research prototype API",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "build": "nest build",
-    "deploy": "nest deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -19,19 +18,22 @@
     "test:watch": "vitest",
     "test:cov": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
-    "test:e2e": "vitest run --config ./vitest.config.e2e.ts"
+    "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
+    "seed": "tsx src/db/seed.ts",
+    "experiments": "tsx experiments/reward-sensitivity.ts",
+    "bench": "tsx experiments/latency.ts"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",
     "@nestjs/core": "^12.0.1",
-    "@nestjs/observe": "^0.1.8",
     "@nestjs/platform-express": "^12.0.1",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "pg": "^8.13.1",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^12.0.0",
-    "@nestjs/mau": "^0.2.6",
     "@nestjs/schematics": "^12.0.0",
     "@nestjs/testing": "^12.0.1",
     "@types/express": "^5.0.0",
@@ -44,6 +46,8 @@
     "supertest": "^7.0.0",
     "typescript": "^6.0.2",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.2",
+    "@types/pg": "^8.11.10",
+    "tsx": "^4.19.2"
   }
 }

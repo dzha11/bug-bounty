@@ -1,21 +1,25 @@
 import { Module } from '@nestjs/common';
-import { createObserveModule } from '@nestjs/observe';
-import { AppController } from './app.controller.js';
-import { AppService } from './app.service.js';
+import { APP_GUARD } from '@nestjs/core';
+import { AnalyticsController } from './analytics/analytics.controller.js';
+import { AuditService } from './audit/audit.service.js';
+import { AuthController } from './auth/auth.controller.js';
+import { AuthGuard } from './auth/auth.guard.js';
+import { CryptoService } from './common/crypto.service.js';
+import { DatabaseService } from './db/database.service.js';
+import { ProgramsController } from './programs/programs.controller.js';
+import { ReportsController } from './reports/reports.controller.js';
+import { ReportsService } from './reports/reports.service.js';
 
-export const { ObserveModule, ObserveInstrument } = createObserveModule();
-
+// The scaffold's third-party telemetry module (@nestjs/observe) was removed on purpose:
+// a vulnerability-disclosure platform must not ship request data to an external SaaS.
 @Module({
-  imports: [
-    // Distributed tracing, auto-correlated logs, request/job metrics, error
-    // telemetry, alarms, and more — out of the box. Sign up at https://observe.nestjs.com
-    ObserveModule.forRoot({
-      appKey: 'YOUR_APP_KEY',
-      appSecret: 'YOUR_APP_SECRET',
-      serviceId: 'backend',
-    }),
+  controllers: [AuthController, ProgramsController, ReportsController, AnalyticsController],
+  providers: [
+    DatabaseService,
+    CryptoService,
+    AuditService,
+    ReportsService,
+    { provide: APP_GUARD, useClass: AuthGuard },
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
