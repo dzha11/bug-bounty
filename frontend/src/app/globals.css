@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/* CyberHunt KZ — restrained civic palette: deep teal ink, warm paper, one signal colour. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --paper: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #14211f;
+  --muted: #5c6b68;
+  --line: #dcd9d0;
+  --brand: #0f5c55;
+  --brand-ink: #ffffff;
+  --signal: #b4471b;
+  --ok: #2f6b3a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #0f1615;
+    --surface: #16201e;
+    --ink: #e7ece9;
+    --muted: #93a39f;
+    --line: #2a3734;
+    --brand: #4fb3a6;
+    --brand-ink: #0b1312;
+    --signal: #e88a5f;
+    --ok: #7cc48a;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-signal: var(--signal);
+  --color-ok: var(--ok);
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.field {
+  @apply w-full rounded-md border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand;
+}
+.btn {
+  @apply inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-ink disabled:opacity-50;
+}
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-md border border-line px-3 py-1.5 text-sm text-ink hover:border-brand;
+}
+.card {
+  @apply rounded-lg border border-line bg-surface p-5;
+}
+.label {
+  @apply mb-1 block text-xs font-medium uppercase tracking-wide text-muted;
 }
