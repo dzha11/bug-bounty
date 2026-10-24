@@ -7,6 +7,11 @@ import { config } from '../config.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
+// Return SQL DATE columns as 'YYYY-MM-DD' strings. By default pg builds a JS Date at
+// local midnight, which shifts the day when serialised as UTC (found in the UI run:
+// a deadline of 2026-12-01 entered in UTC+5 was shown as 2026-11-30).
+pg.types.setTypeParser(1082, (v: string) => v);
+
 @Injectable()
 export class DatabaseService implements OnModuleDestroy {
   readonly pool = new pg.Pool({ connectionString: config.databaseUrl, max: 10 });

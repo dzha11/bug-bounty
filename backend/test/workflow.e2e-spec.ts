@@ -78,6 +78,8 @@ describe('Report lifecycle (E2E, PostgreSQL)', () => {
       .send({ fixNote: 'Ownership check added in ApplicationsController' }).expect(200);
     const closed = await step('operator', 'CLOSED').expect(200);
     expect(closed.body.status).toBe('CLOSED');
+    // regression: DATE must not shift by the server time zone
+    expect(closed.body.remediation.deadline).toBe('2026-12-01');
     expect(closed.body.transitions.map((t: any) => t.to_status)).toEqual([
       'SUBMITTED', 'TRIAGE', 'VALIDATED', 'ACCEPTED', 'SEVERITY_ASSIGNED', 'REWARD_APPROVED', 'PAID',
       'REMEDIATION', 'RETEST', 'CLOSED',

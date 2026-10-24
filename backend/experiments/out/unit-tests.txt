@@ -1,23 +1,23 @@
-# node v22.23.4, PostgreSQL 16.15, 2026-10-24T12:54:01Z
+# node v22.23.4, PostgreSQL 16.15, 2026-10-24T13:12:48Z
 
  RUN  v4.1.12 /home/claude/bug-bounty/backend
 
- ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > round-trips and never stores plaintext 5ms
+ ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > round-trips and never stores plaintext 4ms
  ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > uses a fresh IV: same plaintext gives different ciphertext 2ms
- ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > detects tampering and ciphertext swapping between records (AAD) 2ms
- ✓ src/common/security.spec.ts > passwords and tokens > scrypt hashes verify only the right password 157ms
- ✓ src/common/security.spec.ts > passwords and tokens > tokens: valid, tampered, expired, alg=none 1ms
+ ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > detects tampering and ciphertext swapping between records (AAD) 1ms
+ ✓ src/common/security.spec.ts > passwords and tokens > scrypt hashes verify only the right password 136ms
+ ✓ src/common/security.spec.ts > passwords and tokens > tokens: valid, tampered, expired, alg=none 2ms
  ✓ src/common/security.spec.ts > audit hash chain > canonical JSON is key-order independent 0ms
  ✓ src/common/security.spec.ts > audit hash chain > changing any field changes the hash 1ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > happy path follows the specification order 3ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > researcher can never move a report (no self-approval) 3ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > payment cannot be skipped or done before severity assignment 0ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > reward does not depend on remediation: PAID precedes REMEDIATION 0ms
- ✓ src/reports/workflow.spec.ts > report workflow state machine > terminal states have no outgoing transitions 6ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > terminal states have no outgoing transitions 4ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > wrong role on a valid edge is FORBIDDEN_ROLE, not INVALID_TRANSITION 0ms
  ✓ src/reports/workflow.spec.ts > report workflow state machine > every status is reachable from SUBMITTED 0ms
- ✓ src/reports/workflow.spec.ts > scope matching > https://portal.agency-a.test/login -> true 1ms
- ✓ src/reports/workflow.spec.ts > scope matching > https://eservices.portal.agency-a.test/form?id=1 -> true 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://portal.agency-a.test/login -> true 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://eservices.portal.agency-a.test/form?id=1 -> true 1ms
  ✓ src/reports/workflow.spec.ts > scope matching > api.agency-a.test/v1/users/42 -> true 0ms
  ✓ src/reports/workflow.spec.ts > scope matching > https://api.agency-a.test/v2/users -> false 0ms
  ✓ src/reports/workflow.spec.ts > scope matching > https://status.portal.agency-a.test/ -> false 0ms
@@ -42,10 +42,10 @@
  ✓ src/scoring/reward.spec.ts > reward models > distinguishes findings that CVSS-only scoring cannot (same vector, different context) 1ms
  ✓ src/scoring/reward.spec.ts > reward models > quality moves the amount inside the band but never across tiers 0ms
  ✓ src/scoring/reward.spec.ts > reward models > a finding without impact is not rewardable 0ms
- ✓ src/scoring/reward.spec.ts > reward models > tier thresholds 1ms
+ ✓ src/scoring/reward.spec.ts > reward models > tier thresholds 0ms
 
  Test Files  4 passed (4)
       Tests  41 passed (41)
-   Start at  17:54:01
-   Duration  1.14s (transform 170ms, setup 0ms, import 403ms, tests 204ms, environment 0ms)
+   Start at  18:12:49
+   Duration  1.21s (transform 177ms, setup 0ms, import 435ms, tests 179ms, environment 0ms)
 
