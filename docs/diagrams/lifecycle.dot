@@ -1,0 +1,16 @@
+digraph L {
+  rankdir=TB; nodesep=0.5; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#ffffff", color="#5c6b68"]; edge [fontname="Helvetica", fontsize=8, color="#5c6b68"];
+  SUBMITTED -> TRIAGE [label="operator"];
+  TRIAGE -> VALIDATED [label="operator"];
+  TRIAGE -> REJECTED [label="operator\n(reason required)"];
+  VALIDATED -> ACCEPTED [label="operator"];
+  VALIDATED -> DUPLICATE [label="operator\n(link earlier report)"];
+  ACCEPTED -> SEVERITY_ASSIGNED [label="operator\n/assess"];
+  SEVERITY_ASSIGNED -> REWARD_APPROVED [label="admin\n(≠ assessor)"];
+  REWARD_APPROVED -> PAID [label="admin"];
+  PAID -> REMEDIATION [label="agency\nresponsible + deadline"];
+  REMEDIATION -> RETEST [label="agency\nfix note"];
+  RETEST -> CLOSED [label="operator\nretest passed"];
+  RETEST -> REMEDIATION [label="operator\nretest failed"];
+  REJECTED [fillcolor="#eeeeee"]; DUPLICATE [fillcolor="#eeeeee"]; CLOSED [fillcolor="#e6f0ee"]; PAID [fillcolor="#e6f0ee"];
+}
