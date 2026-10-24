@@ -1,0 +1,31 @@
+# node v22.23.4, PostgreSQL 16.15, 2026-10-24T12:54:03Z
+
+ RUN  v4.1.12 /home/claude/bug-bounty/backend
+
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S1 [ASVS V4.1.1] protected endpoints deny anonymous access 10ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S2 [ASVS V3.5.3] forged, tampered and alg=none tokens are rejected 4ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S3 [ASVS V4.1.3, API5 BFLA] researcher cannot perform operator/admin functions 11ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S4 [ASVS V4.2.1, API1 BOLA/IDOR] a researcher cannot read another researcher's report 8ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S5 [API1 BOLA] agencies see only their own, accepted reports 46ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S6 [ASVS V6.2.1, V8.3.4] confidential fields are encrypted at rest (AES-256-GCM) 2ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S7 [ASVS V7.1.1] audit log never contains confidential report content 1ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S8 [ASVS V7.3.3] audit log is append-only and tampering is detected by the hash chain 15ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S9 [ASVS V2.2.1] brute force: login is throttled after 5 failures 234ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S10 [ASVS V2.1, V5.1.3] input validation and no user enumeration 52ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S11 [ASVS V5.3.4] SQL metacharacters are stored as data (parameterised queries) 25ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S12 [ASVS V14.4] security headers and no caching of confidential responses 6ms
+ ✓ test/security.e2e-spec.ts > Security controls (E2E, PostgreSQL) > S13 [ASVS V7.2] viewing a PoC is itself logged 1ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F1 public catalog shows scope and the reward matrix before testing 14ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F2 submission is refused until Safe Harbor is accepted 23ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F3 researcher submits a report; CVSS is computed server-side 10ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F4 full workflow: triage -> validated -> accepted -> assessed -> approved -> paid -> remediation -> retest -> closed 86ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F5 researcher earns points after payment and sees the outcome 6ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F6 automatic duplicate check flags a near-identical second report 81ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F7 invalid transitions are rejected (409) and state is unchanged 17ms
+ ✓ test/workflow.e2e-spec.ts > Report lifecycle (E2E, PostgreSQL) > F8 analytics summarise the pipeline 7ms
+
+ Test Files  2 passed (2)
+      Tests  21 passed (21)
+   Start at  17:54:03
+   Duration  2.85s (transform 254ms, setup 0ms, import 941ms, tests 1.61s, environment 0ms)
+

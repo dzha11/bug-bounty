@@ -92,8 +92,8 @@ describe('Report lifecycle (E2E, PostgreSQL)', () => {
   });
 
   it('F6 automatic duplicate check flags a near-identical second report', async () => {
-    await http().post('/programs/1/safe-harbor').set({ Authorization: `Bearer ${await login(app, 'researcher2@cyberhunt.test')}` });
     const t2 = await login(app, 'researcher2@cyberhunt.test');
+    await http().post('/programs/1/safe-harbor').set({ Authorization: `Bearer ${t2}` }).expect(201);
     const r = await http().post('/reports').set({ Authorization: `Bearer ${t2}` })
       .send(sampleReport({ title: 'Application status IDOR exposes other applicants data',
         description: 'Changing the numeric application id returns another applicant record because the server performs no ownership check.' }))

@@ -1,0 +1,51 @@
+# node v22.23.4, PostgreSQL 16.15, 2026-10-24T12:54:01Z
+
+ RUN  v4.1.12 /home/claude/bug-bounty/backend
+
+ ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > round-trips and never stores plaintext 5ms
+ ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > uses a fresh IV: same plaintext gives different ciphertext 2ms
+ ✓ src/common/security.spec.ts > field encryption (AES-256-GCM) > detects tampering and ciphertext swapping between records (AAD) 2ms
+ ✓ src/common/security.spec.ts > passwords and tokens > scrypt hashes verify only the right password 157ms
+ ✓ src/common/security.spec.ts > passwords and tokens > tokens: valid, tampered, expired, alg=none 1ms
+ ✓ src/common/security.spec.ts > audit hash chain > canonical JSON is key-order independent 0ms
+ ✓ src/common/security.spec.ts > audit hash chain > changing any field changes the hash 1ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > happy path follows the specification order 3ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > researcher can never move a report (no self-approval) 3ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > payment cannot be skipped or done before severity assignment 0ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > reward does not depend on remediation: PAID precedes REMEDIATION 0ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > terminal states have no outgoing transitions 6ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > wrong role on a valid edge is FORBIDDEN_ROLE, not INVALID_TRANSITION 0ms
+ ✓ src/reports/workflow.spec.ts > report workflow state machine > every status is reachable from SUBMITTED 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://portal.agency-a.test/login -> true 1ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://eservices.portal.agency-a.test/form?id=1 -> true 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > api.agency-a.test/v1/users/42 -> true 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://api.agency-a.test/v2/users -> false 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://status.portal.agency-a.test/ -> false 0ms
+ ✓ src/reports/workflow.spec.ts > scope matching > https://portal.agency-a.test.evil.example/ -> false 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H -> 9.8 (unauthenticated RCE (e.g. CVE-2021-44228 class, scope unchanged)) 2ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H -> 10 (CVE-2021-44228 Log4Shell) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N -> 7.5 (CVE-2014-0160 Heartbleed (v3 rescoring)) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N -> 6.1 (typical reflected XSS) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H -> 7.8 (local privilege escalation) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N -> 6.5 (authenticated IDOR read) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H -> 8.1 (high-complexity network RCE) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:P/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N -> 1.6 (minimal physical info leak) 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N -> 0 (no impact) 1ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > implements the v3.1 floating-point-safe Roundup 0ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > maps scores to qualitative severity 1ms
+ ✓ src/scoring/cvss31.spec.ts > CVSS v3.1 base score > rejects malformed vectors 1ms
+ ✓ src/scoring/reward.spec.ts > reward models > weights sum to 1 2ms
+ ✓ src/scoring/reward.spec.ts > reward models > quality score is in [0,1] 0ms
+ ✓ src/scoring/reward.spec.ts > reward models > baseline depends on CVSS only and stays inside the published band 1ms
+ ✓ src/scoring/reward.spec.ts > reward models > multi-factor score is bounded in [0,10] 0ms
+ ✓ src/scoring/reward.spec.ts > reward models > is monotonic: raising any factor never lowers the score 0ms
+ ✓ src/scoring/reward.spec.ts > reward models > distinguishes findings that CVSS-only scoring cannot (same vector, different context) 1ms
+ ✓ src/scoring/reward.spec.ts > reward models > quality moves the amount inside the band but never across tiers 0ms
+ ✓ src/scoring/reward.spec.ts > reward models > a finding without impact is not rewardable 0ms
+ ✓ src/scoring/reward.spec.ts > reward models > tier thresholds 1ms
+
+ Test Files  4 passed (4)
+      Tests  41 passed (41)
+   Start at  17:54:01
+   Duration  1.14s (transform 170ms, setup 0ms, import 403ms, tests 204ms, environment 0ms)
+
